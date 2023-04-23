@@ -13,18 +13,13 @@ def run(file):
             for y in range(len(lines)):
                 for x in range(len(lines[y])):
                     c = lines[y][x]
+                    c_below, c_below_left, c_below_right = '','',''
                     if y+1<len(lines) and x<len(lines[y+1]):
                         c_below = lines[y+1][x]
-                    else:
-                        c_below = ''
                     if x-1>=0 and y+1<len(lines):
                         c_below_left = lines[y+1][x-1]
-                    else:
-                        c_below_left = ''
                     if y+1<len(lines) and x+1<len(lines[y+1]):
                         c_below_right = lines[y+1][x+1]
-                    else:
-                        c_below_right = ''
                     has_future[y][x] = int((c_below.isspace() or c_below_left.isspace() or c_below_right.isspace()) and not c.isspace())
                     if not c.isspace() and has_future[y][x]:
                         if c_below.isspace() and not c_below=='':
